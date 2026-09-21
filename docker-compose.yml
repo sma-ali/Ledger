@@ -1,0 +1,37 @@
+services:
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Ledger!Passw0rd"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      # Le conteneur répond au réseau bien avant que le moteur accepte les
+      # requêtes. Sans ce test, le batch démarrerait trop tôt et échouerait.
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  ledger:
+    build: .
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    environment:
+      # Le double underscore est la convention .NET pour désigner une
+      # section imbriquée : ceci remplace ConnectionStrings:Ledger du
+      # fichier appsettings.json, sans le modifier.
+      ConnectionStrings__Ledger: "Server=sqlserver,1433;Database=Ledger;User Id=sa;Password=Ledger!Passw0rd;TrustServerCertificate=True;Encrypt=False"
+      Ledger__DataDirectory: "/data"
+    volumes:
+      - ./data:/data:ro
+
+volumes:
+  sqlserver-data:
