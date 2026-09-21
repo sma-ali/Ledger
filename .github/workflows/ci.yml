@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupération du code
+        uses: actions/checkout@v4
+
+      - name: Installation du SDK .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      # Étape séparée pour profiter du cache NuGet entre les exécutions.
+      - name: Restauration des dépendances
+        run: dotnet restore
+
+      # --no-restore : la restauration vient d'être faite, on ne la refait pas.
+      # Le mode Release active les mêmes optimisations qu'en production.
+      - name: Compilation
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Tests
+        run: dotnet test --configuration Release --no-build --verbosity normal

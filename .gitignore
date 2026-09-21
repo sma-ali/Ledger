@@ -1,0 +1,27 @@
+# Résultats de compilation .NET
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+
+# Fichiers utilisateur d'IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Secrets et configuration locale
+appsettings.Development.json
+appsettings.Local.json
+*.env
+.env
+
+# Tests
+[Tt]est[Rr]esult*/
+coverage*.json
+coverage*.xml
+
+# Divers
+*.log
