@@ -1,0 +1,11 @@
+# Ce fichier ne s'applique qu'aux projets de tests (il est dans tests/).
+
+[*.cs]
+
+# CA1707 interdit les underscores dans les noms de membres. La règle est
+# bonne pour du code de production, mais la convention universelle en test
+# est justement de nommer les méthodes en phrases lisibles :
+#     Deux_cles_de_memes_valeurs_sont_egales
+# Le nom du test est ce que lit celui qui voit la CI échouer, donc il prime.
+# On désactive la règle ici, et nulle part ailleurs.
+dotnet_diagnostic.CA1707.severity = none
