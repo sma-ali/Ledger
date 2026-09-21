@@ -1,6 +1,6 @@
 # Ledger
 
-[![CI](https://github.com/TON-COMPTE/Ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/TON-COMPTE/Ledger/actions/workflows/ci.yml)
+[![CI](https://github.com/sma-ali/Ledger/actions/workflows/ci.yml/badge.svg)](https://github.com/sma-ali/Ledger/actions/workflows/ci.yml)
 
 Plusieurs outils produisent le résultat quotidien d'une même salle de marché,
 chacun dans son format et avec ses propres libellés, et leurs montants ne
