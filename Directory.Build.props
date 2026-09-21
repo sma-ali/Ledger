@@ -1,0 +1,27 @@
+<Project>
+
+  <!-- Propriétés appliquées automatiquement à TOUS les projets de la solution.
+       MSBuild remonte l'arborescence et importe ce fichier dans chaque .csproj :
+       une seule source de vérité pour la version du framework et le mode strict. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <!-- Nullable reference types : le compilateur distingue string (jamais null)
+         de string? (peut être null) et signale toute déréférence non protégée. -->
+    <Nullable>enable</Nullable>
+
+    <!-- Évite d'écrire using System; en haut de chaque fichier. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Mode strict : le moindre avertissement casse la compilation,
+         donc aussi la CI. On ne laisse pas la dette s'accumuler. -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+
+    <!-- Compilation déterministe : mêmes sources => même binaire. -->
+    <Deterministic>true</Deterministic>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Ledger.Batch/Ledger.Batch.csproj" />
+    <Project Path="src/Ledger.Domain/Ledger.Domain.csproj" />
+    <Project Path="src/Ledger.Ingestion/Ledger.Ingestion.csproj" />
+    <Project Path="src/Ledger.Persistence/Ledger.Persistence.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Ledger.Domain.Tests/Ledger.Domain.Tests.csproj" />
+    <Project Path="tests/Ledger.Ingestion.Tests/Ledger.Ingestion.Tests.csproj" />
+  </Folder>
+</Solution>
