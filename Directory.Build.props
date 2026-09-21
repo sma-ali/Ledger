@@ -21,7 +21,12 @@
 
     <!-- Compilation déterministe : mêmes sources => même binaire. -->
     <Deterministic>true</Deterministic>
-    <InvariantGlobalization>true</InvariantGlobalization>
+
+    <!-- InvariantGlobalization n'est PAS activé : Microsoft.Data.SqlClient
+         refuse de s'ouvrir sans les données de culture ICU, avec un
+         « Globalization Invariant Mode is not supported » au premier
+         Open(). Le gain de taille d'image ne vaut pas une application qui
+         ne se connecte plus. -->
   </PropertyGroup>
 
 </Project>
