@@ -22,7 +22,7 @@ public static class ConsoleReport
         var culture = CultureInfo.InvariantCulture;
 
         Console.WriteLine();
-        Console.WriteLine($"  LEDGER — run {batchRunId} — date métier {businessDate:yyyy-MM-dd}");
+        Console.WriteLine($"  LEDGER | run {batchRunId} | date métier {businessDate:yyyy-MM-dd}");
         Console.WriteLine(new string('=', 78));
 
         Console.WriteLine();

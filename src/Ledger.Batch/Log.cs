@@ -9,7 +9,7 @@ namespace Ledger.Batch;
 /// implémentation qui évite le boxing des arguments et ne construit le
 /// message que si le niveau est effectivement actif. Les appels directs à
 /// LogInformation paient ce coût à chaque ligne, même quand la trace est
-/// désactivée — ce qui compte sur un batch qui en écrit des milliers.
+/// désactivée - ce qui compte sur un batch qui en écrit des milliers.
 ///
 /// Effet de bord appréciable : tous les messages du batch sont réunis ici
 /// plutôt qu'éparpillés dans le code.
