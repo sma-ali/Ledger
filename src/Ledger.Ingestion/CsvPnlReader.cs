@@ -201,7 +201,7 @@ public sealed class CsvPnlReader
         // AllowThousands : la virgule est le séparateur de milliers de la
         // culture invariante, donc « 12,34 » serait lu 1234 sans broncher.
         // À ce stade les séparateurs de milliers ont déjà été retirés, donc
-        // il n'y a rien à autoriser — et tout à refuser.
+        // il n'y a rien à autoriser - et tout à refuser.
         return decimal.TryParse(
             normalized,
             NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingSign,

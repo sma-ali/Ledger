@@ -36,7 +36,7 @@ docker compose run --rm ledger --date 2026-09-18
 ## Ce que ça affiche
 
 ```
-  LEDGER — run 1 — date métier 2026-09-18
+  LEDGER | run 1 | date métier 2026-09-18
 ==============================================================================
 
   CONSOLIDATION PAR DESK
@@ -103,14 +103,14 @@ Le résultat est découpé en deux tables plutôt qu'aplati en colonnes
 `MontantFO` / `MontantBO` : une troisième source s'ajoute alors sans toucher
 ni au schéma ni aux requêtes.
 
-Les montants sont en `DECIMAL(19,4)`, jamais en `FLOAT` — l'arrondi binaire
+Les montants sont en `DECIMAL(19,4)`, jamais en `FLOAT` - l'arrondi binaire
 d'un flottant fabriquerait exactement les écarts que l'application doit
 détecter.
 
 ## Comment c'est découpé
 
 ```
-src/Ledger.Domain        modèle commun + moteur de réconciliation — zéro dépendance
+src/Ledger.Domain        modèle commun + moteur de réconciliation - zéro dépendance
 src/Ledger.Ingestion     lecture des CSV hétérogènes              → Domain
 src/Ledger.Persistence   SQL Server via Dapper                     → Domain
 src/Ledger.Batch         orchestration, configuration, restitution → tout
@@ -134,7 +134,7 @@ la formule reste juste au-delà de deux sources. La borne de tolérance est
 incluse. Les seuils vivent dans la configuration, par devise, et le moteur les
 reçoit en paramètre sans savoir d'où ils viennent.
 
-Plusieurs lignes d'une même source sont agrégées avant comparaison — le front
+Plusieurs lignes d'une même source sont agrégées avant comparaison - le front
 éclate parfois un montant que la compta consolide. Ce n'est pas un écart, mais
 `EntryCount` le rend visible.
 
@@ -142,7 +142,7 @@ Plusieurs lignes d'une même source sont agrégées avant comparaison — le fro
 
 Le batch efface ce qu'un run précédent a produit pour la même date métier avant
 de recommencer. Relancer trois fois la même journée laisse exactement un run et
-le même contenu en base, jamais des doublons — le comportement attendu d'un
+le même contenu en base, jamais des doublons - le comportement attendu d'un
 traitement relancé après incident par un ordonnanceur.
 
 Une ligne portant une autre date que celle du run est rejetée plutôt
