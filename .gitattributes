@@ -1,0 +1,14 @@
+# Normalise les fins de ligne dans le dépôt : LF en interne, conversion
+# selon la plateforme à l'extraction. Sans ça, un clone sous Windows
+# réécrit des fichiers entiers et pollue les diffs.
+* text=auto
+
+# Fichiers dont les fins de ligne ne doivent jamais être converties.
+*.sh text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Fichiers binaires : jamais de conversion, jamais de diff textuel.
+*.png binary
+*.jpg binary
+*.pdf binary
