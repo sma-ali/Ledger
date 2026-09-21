@@ -4,4 +4,15 @@
     <ProjectReference Include="..\Ledger.Domain\Ledger.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.86" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.0" />
+  </ItemGroup>
+
+  <!-- Les scripts SQL sont embarqués dans la DLL : le batch porte son
+       propre schéma et n'a pas besoin qu'on lui monte des fichiers. -->
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\*.sql" />
+  </ItemGroup>
+
 </Project>
